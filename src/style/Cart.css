@@ -1,0 +1,7 @@
+.cart__btn {
+	width: 25px;
+	height: 25px;
+	border-radius: 100%;
+	border: none;
+	cursor: pointer;
+}
