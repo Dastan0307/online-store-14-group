@@ -5,6 +5,8 @@ import Cart from './pages/Cart'
 import CreateProduct from './pages/CreateProduct'
 import MainPage from './pages/MainPage'
 import Products from './pages/Products'
+import ProductDetails from './pages/ProductDetails'
+import EditProductPage from './pages/EditProductPage'
 
 import './App.css'
 
@@ -18,6 +20,8 @@ function App() {
 				<Route path='/cart' element={<Cart />} />
 				<Route path='/products' element={<Products />} />
 				<Route path='/create-product' element={<CreateProduct />} />
+				<Route path='/product-details/:id' element={<ProductDetails />} />
+				<Route path='/edit-product/:id' element={<EditProductPage />} />
 			</Routes>
 		</>
 	)

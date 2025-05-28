@@ -6,6 +6,7 @@ const API = 'https://api.escuelajs.co/api/v1/products'
 
 const initialState = {
 	products: [],
+	productById: null,
 	loading: false,
 	error: null
 }
@@ -24,6 +25,15 @@ export const fetchProducts = createAsyncThunk('products/fetchProducts', async ()
 export const deleteProduct = createAsyncThunk('products/deleteProduct', async (id) => {
 	try {
 		await axios.delete(`${API}/${id}`)
+	} catch (error) {
+		console.log(error);
+	}
+})
+
+export const getProductById = createAsyncThunk('products/getProductById', async (id) => {
+	try {
+		const response = await axios.get(`${API}/${id}`)
+		return response.data
 	} catch (error) {
 		console.log(error);
 	}
@@ -51,6 +61,10 @@ const productsSlice = createSlice({
 		.addCase(deleteProduct.fulfilled, (state, action) => {
 			state.products = state.products.filter(product => product.id !== action.payload)
 			toast.success('Товар успешно удален')
+		})
+
+		.addCase(getProductById.fulfilled, (state, action) => {
+			state.productById = action.payload
 		})
 	}
 })
